@@ -33,8 +33,6 @@ func main() {
 	authV1.GET("/auth/google/login", controllers.GoogleLogin)
 	authV1.GET("/auth/google/callback", controllers.GoogleCallback)
 
-	authV1.GET("/users/me", middleware.Auth(), controllers.GetMe)
-
 	authV1.GET("/todo", middleware.Auth(), controllers.GetTodos)
 	authV1.GET("/todo/:id", middleware.Auth(), controllers.GetTodoByID)
 	authV1.PUT("/todo", middleware.Auth(), controllers.CreateTodo)
