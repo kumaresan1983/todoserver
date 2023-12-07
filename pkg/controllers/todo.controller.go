@@ -10,14 +10,6 @@ import (
 	"github.com/kumaresan1983/todoserver/pkg/models"
 )
 
-func GetMe(ctx *gin.Context) {
-	currentUser := ctx.MustGet("currentUser").(models.Users)
-
-	ctx.JSON(http.StatusOK, gin.H{"status": "success", "data": gin.H{"user": &currentUser}})
-
-	// ctx.JSON(http.StatusOK, gin.H{"status": "auth success"})
-}
-
 func CreateTodo(c *gin.Context) {
 	var todoInput models.ToDo
 
