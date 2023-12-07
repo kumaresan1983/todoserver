@@ -1,0 +1,29 @@
+version: '3'
+services:
+  todoserver:
+    container_name: golang_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - fullstack
+
+  mysql:
+    container_name: db_mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: golang
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    ports:
+      - "3306:3306"
+    networks:
+      - fullstack	  
+networks:
+  fullstack:
+    driver: bridge
